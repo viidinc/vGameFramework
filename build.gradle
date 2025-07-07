@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group = 'org.example'
@@ -12,10 +13,18 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
-    implementation 'io.github.electronstudio:jaylib-ffm:5.5.0-0'
+    implementation 'io.github.electronstudio:jaylib-ffm:5.5.0-2'
     //io/github/electronstudio/jaylib-ffm/5.5.0-0/jaylib-ffm-5.5.0-0.pom
 }
 
 test {
     useJUnitPlatform()
+}
+
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'com.vgf.core.main'
+    }
+    archiveFileName = 'v-Game.jar'
 }

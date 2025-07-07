@@ -21,6 +21,16 @@ public class Util {
         vec1.setY(vec1.y()+vec2.y()*mult);
         return vec1;
     }
-
+    public static float getDistance(float x1, float y1, float x2, float y2){
+        return (float) Math.abs(Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2)));
+    }
+    public static Vector2 multVector(Vector2 vec, float mult){
+        vec.x(vec.x()*mult);
+        vec.y(vec.y()*mult);
+        return vec;
+    }
+    public static Vector2 copyVector(Vector2 vec){
+        return new Vector2(vec.x(), vec.y());
+    }
 
 }

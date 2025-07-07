@@ -9,6 +9,7 @@ public class Input {
     public static Action moveDown = new Action(Raylib.KeyboardKey.KEY_S);
     public static Action moveLeft = new Action(Raylib.KeyboardKey.KEY_D);
     public static Action moveRight = new Action(Raylib.KeyboardKey.KEY_A);
+    public static Action dash = new Action(Raylib.KeyboardKey.KEY_SPACE);
 
     public static class Action{
         public int key;
@@ -19,19 +20,19 @@ public class Input {
         public void setKey(int key){
             this.key = key;
         }
-        boolean pressed(){
+        public boolean pressed(){
             return Raylib.isKeyPressed(key);
         }
-        boolean pressedRepeat(){
+        public boolean pressedRepeat(){
             return Raylib.isKeyPressedRepeat(key);
         }
-        boolean down(){
+        public boolean down(){
             return Raylib.isKeyDown(key);
         }
-        boolean released(){
+        public boolean released(){
             return Raylib.isKeyReleased(key);
         }
-        boolean up(){
+        public boolean up(){
             return Raylib.isKeyUp(key);
         }
     }
@@ -46,8 +47,6 @@ public class Input {
         if (positiveX.down() != negativeX.down()){
             x = positiveX.down() ? -1 : 1;
         }
-        System.out.println(x);
-        System.out.println(y);
         return new Vector2(x,y);
     }
 

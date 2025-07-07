@@ -3,22 +3,19 @@ package com.vgf.core;
 import com.raylib.Raylib;
 import com.vgf.core.object.GameScene;
 
-import java.awt.*;
-
-
 public class Engine {
 
     private static boolean shouldEndGame = false;
 
-
-
     public static void StartMainLoop(GameScene rootScene){
         //Before starting logic
-        initWindow(640,480,"vGameFramework");
+        initWindow(1280,720,"vGameFramework");
+
+
         Raylib.setTargetFPS(60);
         rootScene.create();
         //Main game loop
-        while (!shouldEndGame){
+        while (!shouldEndGame && !Raylib.windowShouldClose()){
             rootScene.tick();
             rootScene.fixedTick();
             Raylib.beginDrawing();
@@ -31,7 +28,7 @@ public class Engine {
         Raylib.closeWindow();
     }
 
-    public void endGame(){
+    public static void endGame(){
         shouldEndGame = true;
     }
 
